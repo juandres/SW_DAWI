@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dawi">
+
+	<!-- MAPS DE LOS BEANS -->
+
+	<resultMap id="CategoriaInsumoMap" type="CategoriaInsumoIbatis">
+		<id property="codigo" column="codigo" />
+		<result property="descripcion" column="descripcion" />
+	</resultMap>
+
+	<resultMap id="CategoriaProductoMap" type="CategoriaProductoIbatis">
+		<id property="codigo" column="codigo" />
+		<result property="descripcion" column="descripcion" />
+	</resultMap>
+
+	<resultMap id="UnidadMedidaMap" type="UnidadMedidaIbatis">
+		<id property="codigo" column="codigo" />
+		<result property="descripcion" column="descripcion" />
+	</resultMap>
+
+	<resultMap id="InsumoMap" type="InsumoIbatis">
+		<id property="codigo" column="codigo" />
+		<result property="descripcion" column="descripcion" />
+		<association property="categoria" resultMap="CategoriaInsumoMap" />
+		<association property="unidad" resultMap="UnidadMedidaMap" />
+	</resultMap>
+	
+	<resultMap id="ProductoMap" type="ProductoIbatis">
+		<id property="codigo" column="codigo" />
+		<result property="descripcion" column="descripcion" />
+		<result property="precio" column="precio"/>
+		<result property="tiempo_preparacion" column="tiempo_preparacion"/>
+		<association property="categoria" resultMap="CategoriaProductoMap"/>
+	</resultMap>
+	
+	<resultMap id="DetalleProductoMap" type="DetalleProductoIbatis">
+		<id property="codigo" column="codigo" />
+		<result property="cantidad" column="cantidad" />
+		<result property="codigo_producto" column="codigo_producto" />
+		<result property="codigo_insumo" column="codigo_insumo" />		
+		<association property="producto" resultMap="ProductoMap" />
+		<association property="insumo" resultMap="InsumoMap" />
+	</resultMap>
+
+	<!-- CATEGORIA INSUMO -->
+
+	<select id="SQL_INSERTAR_CATEGORIA_INSUMO" parameterType="CategoriaInsumoIbatis">
+		INSERT
+		INTO
+		CATEGORIA_INSUMO
+		VALUES
+		(#{codigo},#{descripcion})
+	</select>
+
+	<select id="SQL_ACTUALIZAR_CATEGORIA_INSUMO" parameterType="CategoriaInsumoIbatis">
+		UPDATE
+		CATEGORIA_INSUMO
+		SET
+		DESCRIPCION_INSUMO = #{descripcion}
+		WHERE
+		ID_CATEGORIA_INSUMO = #{codigo}
+	</select>
+
+	<select id="SQL_ELIMINAR_CATEGORIA_INSUMO" parameterType="int">
+		DELETE
+		FROM CATEGORIA_INSUMO WHERE ID_CATEGORIA_INSUMO = #{id}
+	</select>
+
+	<select id="SQL_LISTAR_CATEGORIA_INSUMO" resultMap="CategoriaInsumoMap">
+		SELECT
+		ID_CATEGORIA_INSUMO as codigo,
+		DESCRIPCION_INSUMO as descripcion
+		FROM
+		CATEGORIA_INSUMO
+	</select>
+
+	<!-- CATEGORIA PRODUCTO -->
+
+	<select id="SQL_LISTAR_CATEGORIA_PRODUCTO" resultMap="CategoriaProductoMap">
+		SELECT
+		ID_CATEGORIA_PRODUCTO as codigo,
+		DESCRIPCION_CATEGORIA as descripcion
+		FROM
+		CATEGORIA_PRODUCTO
+	</select>
+	
+	<!-- INSUMO -->
+	
+	<select id="SQL_LISTAR_INSUMO_X_CATEGORIA" parameterType="int" resultMap="InsumoMap">
+		SELECT
+		ID_INSUMO as codigo,
+		DESCRIPCION_INSUMO as descripcion,
+		ID_UNIDAD as unidad,
+		ID_CATEGORIA_INSUMO as categoria
+		FROM
+		INSUMO
+		WHERE ID_CATEGORIA_INSUMO = #{id}
+	</select>
+
+</mapper>
