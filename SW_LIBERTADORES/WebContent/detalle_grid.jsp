@@ -13,11 +13,7 @@
 
 	<sjg:gridColumn name="codigo" key="true" index="codigo" editable="true"
 		title="Codigo" width="50" sortable="false" />
-	<sjg:gridColumn name="codigo_producto" index="codigo_producto" editable="true"
-		title="Codigo Producto" width="70" sortable="false" />
-	<sjg:gridColumn name="codigo_insumo" index="codigo_insumo" editable="true"
-		title="Codigo Insumo" width="70" sortable="false" />
-	<sjg:gridColumn name="cantidad" index="cantidad" editable="true"
-		title="Cantidad" width="70" sortable="false" />
+	<sjg:gridColumn name="descripcion" index="descripcion" editable="true"
+		title="Descripcion" width="70" sortable="false" />	
 </sjg:grid>
 

@@ -35,6 +35,11 @@ public class InsumoBean implements Serializable{
 		this.unidad = unidad;
 	}
 	
+	@Override
+	public String toString() {
+		return codigo+" - "+descripcion;		
+	}
+	
 	
 
 }
