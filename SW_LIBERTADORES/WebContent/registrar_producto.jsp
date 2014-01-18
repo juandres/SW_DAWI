@@ -30,7 +30,6 @@
 			<div class="span4" style="border-right-style: solid;">
 				<br />
 				<s:form id="f1">
-					<s:hidden id="descripcion" name="descripcion" value="PISCO"/>
 					<s:hidden id="id" name="id" />
 					<table>
 						<tr>
@@ -38,9 +37,9 @@
 							<td><div id="resultado_busqueda_insumos"
 									class="input-control select">
 									<s:url id="cargarGridInsumos" action="cargarGridInsumos" />
-									<sj:select id="cboInsumo" name="codigo"
+									<sj:select id="cboInsumo" name="codigo_insumo"
 										href="%{cargarGridInsumos}" list="grdInsumos" listKey="codigo"
-										listValue="descripcion" headerKey=" " headerValue="[Elegir]"/>
+										listValue="descripcion" headerKey=" " headerValue="[Elegir]" />
 								</div></td>
 						</tr>
 					</table>
@@ -62,7 +61,7 @@
 						<td><sj:submit id="btnAbarrote" effect="slide"
 								effectDuration="500" cssClass="bg-darkOrange fg-white"
 								value="Abarrotes" formIds="f1" onclick="obtenerInsumos(4);"
-								targets="resultado_busqueda_insumos" /></td>						
+								targets="resultado_busqueda_insumos" /></td>
 					</tr>
 					<tr>
 						<td><sj:submit id="btnBebidas" effect="slide"
@@ -86,6 +85,7 @@
 				</table>
 				<br />
 				<s:form id="f2" action="anhadirDetalle">
+					<s:hidden id="descripcion" name="descripcion"/>
 					<table>
 						<tr>
 							<td>Categoria:&nbsp;&nbsp;</td>

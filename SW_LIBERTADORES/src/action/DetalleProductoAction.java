@@ -35,7 +35,6 @@ public class DetalleProductoAction extends ActionSupport{
 		if(session.get("keyDetalle") == null){
 			insumo = new InsumoBean();
 			insumo.setCodigo(Integer.parseInt(codigo));
-			descripcion = "art";
 			insumo.setDescripcion(descripcion);			
 			detalle_producto.add(insumo);
 			session.put("keyDetalle", detalle_producto);
