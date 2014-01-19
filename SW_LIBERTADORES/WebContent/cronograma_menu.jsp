@@ -22,7 +22,6 @@
 					<tr>
 						<td><div class="calendar" data-role="calendar"></div></td>
 					</tr>
-
 				</table>
 			</div>
 			<div class="span5" style="border-right-style: solid;">
