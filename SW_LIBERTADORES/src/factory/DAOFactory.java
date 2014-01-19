@@ -4,6 +4,7 @@ import iDAO.CategoriaInsumoDAO;
 import iDAO.CategoriaProductoDAO;
 import iDAO.DetalleProductoDAO;
 import iDAO.InsumoDAO;
+import iDAO.ProductoDAO;
 import iDAO.UnidadMedidaDAO;
 
 public abstract class DAOFactory {
@@ -17,6 +18,7 @@ public abstract class DAOFactory {
 	public abstract InsumoDAO getInsumo();
 	public abstract UnidadMedidaDAO getUnidadMedida();
 	public abstract DetalleProductoDAO getDetalleProducto();
+	public abstract ProductoDAO getProducto();
 	
 	public static DAOFactory getFactorty(int bd) {
 		switch (bd) {

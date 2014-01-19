@@ -4,10 +4,12 @@ import dao.MySqlCategoriaInsumoDAO;
 import dao.MySqlCategoriaProductoDAO;
 import dao.MySqlDetalleProductoDAO;
 import dao.MySqlInsumoDAO;
+import dao.MySqlProductoDAO;
 import iDAO.CategoriaInsumoDAO;
 import iDAO.CategoriaProductoDAO;
 import iDAO.DetalleProductoDAO;
 import iDAO.InsumoDAO;
+import iDAO.ProductoDAO;
 import iDAO.UnidadMedidaDAO;
 
 public class MySqlDAOFactory extends DAOFactory{
@@ -36,6 +38,11 @@ public class MySqlDAOFactory extends DAOFactory{
 	@Override
 	public DetalleProductoDAO getDetalleProducto() {
 		return new MySqlDetalleProductoDAO();
+	}
+
+	@Override
+	public ProductoDAO getProducto() {
+		return new MySqlProductoDAO();
 	}
 
 	

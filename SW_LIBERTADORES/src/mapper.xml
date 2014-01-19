@@ -49,11 +49,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- CATEGORIA INSUMO -->
 
 	<select id="SQL_INSERTAR_CATEGORIA_INSUMO" parameterType="CategoriaInsumoIbatis">
-		INSERT
-		INTO
-		CATEGORIA_INSUMO
-		VALUES
-		(#{codigo},#{descripcion})
+		INSERT INTO CATEGORIA_INSUMO VALUES (#{codigo},#{descripcion})
 	</select>
 
 	<select id="SQL_ACTUALIZAR_CATEGORIA_INSUMO" parameterType="CategoriaInsumoIbatis">
@@ -100,5 +96,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		INSUMO
 		WHERE ID_CATEGORIA_INSUMO = #{id}
 	</select>
+	
+	<!-- PRODUCTO -->
+	
+	 <select id="SQL_REGISTRAR_PRODUCTO" parameterType="ProductoIbatis">
+	 INSERT INTO CATEGORIA_INSUMO VALUES (#{codigo},#{descripcion},#{precio},#{tiempo_preparacion},#{categoria})
+	 </select>
 
 </mapper>

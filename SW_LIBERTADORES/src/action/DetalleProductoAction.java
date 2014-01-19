@@ -16,8 +16,8 @@ import com.opensymphony.xwork2.ActionSupport;
 
 @SuppressWarnings("serial")
 @ParentPackage(value = "dawi")
-public class DetalleProductoAction extends ActionSupport{
-	
+public class DetalleProductoAction extends ActionSupport {
+
 	private InsumoBean insumo;
 	private String codigo, descripcion;
 	private static final Log log = LogFactory.getLog(DetalleProductoAction.class);
@@ -26,41 +26,41 @@ public class DetalleProductoAction extends ActionSupport{
 	List<InsumoBean> detalle_producto = new ArrayList<InsumoBean>();
 	Map<String, Object> session = ActionContext.getContext().getSession();
 	List<InsumoBean> grdDetalle = new ArrayList<InsumoBean>();
-	
-		
+
 	@SuppressWarnings("unchecked")
 	@Action(value = "/anhadirDetalle", results = { @Result(location = "/detalle_grid.jsp", name = "success") })
-	public String anhadirDetalle() throws Exception {		
+	public String anhadirDetalle() throws Exception {
 		log.info("En AÑADIR DETALLE - Detalle Producto");
-		if(session.get("keyDetalle") == null){
+		if (session.get("keyDetalle") == null) {
 			insumo = new InsumoBean();
 			insumo.setCodigo(Integer.parseInt(codigo));
-			insumo.setDescripcion(descripcion);			
+			insumo.setDescripcion(descripcion);
 			detalle_producto.add(insumo);
 			session.put("keyDetalle", detalle_producto);
 			System.out.println(session.put("keyDetalle", detalle_producto));
 			log.info("Creando nuevo detalle.");
-		}else{
-			detalle_producto = (ArrayList<InsumoBean>)session.get("keyDetalle");
+		} else {
+			detalle_producto = (ArrayList<InsumoBean>) session.get("keyDetalle");
 			insumo = new InsumoBean();
-			insumo = new InsumoBean();
+			insumo = new InsumoBean();			
 			insumo.setCodigo(Integer.parseInt(codigo));
-			insumo.setDescripcion(descripcion);	
+			insumo.setDescripcion(descripcion);
 			detalle_producto.add(insumo);
 			session.put("keyDetalle", detalle_producto);
 			System.out.println(session.put("keyDetalle", detalle_producto));
 			log.info("Agregando nuevo detalle.");
 		}
-			
+
 		return SUCCESS;
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	@Action(value = "/cargarGridDetalle", results = { @Result(name = "success", type = "json") })
 	public String cargarGridDetalle() throws Exception {
-		log.info("En LISTAR DETALLE - Detalle Producto");		
-	
-		List<InsumoBean> data =  (ArrayList<InsumoBean>)session.get("keyDetalle");
+		log.info("En LISTAR DETALLE - Detalle Producto");
+
+		List<InsumoBean> data = (ArrayList<InsumoBean>) session
+				.get("keyDetalle");
 
 		records = data.size();
 
@@ -74,7 +74,7 @@ public class DetalleProductoAction extends ActionSupport{
 		setTotal((int) Math.ceil((double) records / (double) rows));
 		return SUCCESS;
 	}
-	
+
 	public int getRecords() {
 		return records;
 	}
@@ -154,8 +154,5 @@ public class DetalleProductoAction extends ActionSupport{
 	public void setGrdDetalle(List<InsumoBean> grdDetalle) {
 		this.grdDetalle = grdDetalle;
 	}
-	
-	
-	
-	
+
 }

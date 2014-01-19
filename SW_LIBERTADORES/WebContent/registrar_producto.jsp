@@ -16,10 +16,16 @@
 		document.getElementById("f1").action = 'listarInsumosXCategoria';
 		return true;
 	}
-	function capturar() {
+
+	function agregarDetalle() {
 		var combo = document.getElementById("cboInsumo");
-		var selected = combo.options[combo.selectedIndex].text;
-		document.getElementById("descripcion").value = selected;
+		document.getElementById("codigo").value = combo.value;
+		document.getElementById("descripcion").value = combo.options[combo.selectedIndex].text;
+		document.getElementById("f2").action = 'anhadirDetalle';
+	}
+
+	function registrarProducto() {
+		document.getElementById("f2").action = 'registrarProducto';
 	}
 </script>
 </head>
@@ -84,18 +90,19 @@
 					</tr>
 				</table>
 				<br />
-				<s:form id="f2" action="anhadirDetalle">
-					<s:hidden id="descripcion" name="descripcion"/>
+				<s:form id="f2">
+					<s:hidden id="codigo" name="codigo" />
+					<s:hidden id="descripcion" name="descripcion" />
 					<table>
 						<tr>
 							<td>Categoria:&nbsp;&nbsp;</td>
 							<td><div class="input-control select">
 									<s:url id="listarCategoriaProducto"
 										action="listarCategoriaProducto" />
-									<sj:select id="cboCategoriaProducto"
-										href="%{listarCategoriaProducto}" name="codigo"
-										list="grdCategoriaProducto" listKey="codigo"
-										listValue="descripcion" emptyOption="false" multiple="true" />
+									<sj:select id="cboCategoriaProducto" name="categoria"
+										href="%{listarCategoriaProducto}" list="grdCategoriaProducto"
+										listKey="codigo" listValue="descripcion" emptyOption="false"
+										multiple="true" />
 								</div></td>
 						</tr>
 						<tr>
@@ -123,19 +130,17 @@
 									<input name="cantidad" type="text" placeholder="Ejm.: 5" />
 									<button class="btn-clear"></button>
 								</div></td>
-							<td><sj:submit value="Agregar" formIds="f2"
+							<td><sj:submit id="btnAgregar" value="Agregar" formIds="f2"
 									cssClass="icon-plus-2 fg-black bg-lime"
-									targets="resultado_detalle_producto" /></td>
+									targets="resultado_detalle_producto"
+									onclick="agregarDetalle();" /></td>
 						</tr>
 					</table>
 					<div id="resultado_detalle_producto"></div>
+					<sj:submit id="btnRegistrar" cssClass="command-button inverse" formIds="f2" value="Registrar" onclick="registrarProducto();"/>
 				</s:form>
 			</div>
-
-			<button class="command-button inverse">
-				<i class="icon-share-3 on-right"></i> ¡Listo!<small>Registrar
-					el Producto</small>
-			</button>
+			
 			<div class="span4">
 				<table>
 					<tr>
