@@ -29,7 +29,7 @@ public class MySqlCategoriaInsumoDAO implements CategoriaInsumoDAO{
 	public void registrarCategoriaInsumo(CategoriaInsumoBean c) {
 		SqlSession cnx = sqlMapper.openSession();		
 		try {			
-			cnx.insert("dawi.SQL_INSERTAR_CATEGORIA_INSUMO", c);			
+			cnx.insert("dawi.SQL_INSERTAR_CATEGORIA_INSUMO", c);				
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally{
