@@ -11,7 +11,7 @@
 <script src="METRO\js\metro-datepicker.js"></script>
 <script src="METRO\js\metro-input-control.js"></script>
 <link href="METRO\css\metro-bootstrap.css" rel="stylesheet">
-<title>.:: CRONOGRAMA DEL MENU ::.</title>
+<title>.:: CRONOGRAMA DEL MENU JOH ::.</title>
 </head>
 <body class="metro">
 	<div class="grid fluid">
